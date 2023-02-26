@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,7 +10,11 @@ public class PlayerController : MonoBehaviour
     public float jumpForce;
     public Rigidbody rig;
 
+    public int score;
+
     private bool isGrounded;
+
+    public TextMeshProUGUI scoreText;
 
     // Update is called once per frame
     void Update()
@@ -46,5 +51,10 @@ public class PlayerController : MonoBehaviour
 
     public void GameOver() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void updateScore(int amount) {
+        score += amount;
+        scoreText.text = score.ToString();
     }
 }
